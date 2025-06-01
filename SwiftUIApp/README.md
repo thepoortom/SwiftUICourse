@@ -1,7 +1,9 @@
 ## Homework Assignment
+
 Creating an Application Skeleton Using SwiftUI
 
 ### Goal
+
 - Gain a comprehensive understanding of the SwiftUI/Combine navigation stack.  
 - Learn how to build a screen hierarchy using SwiftUI/Combine.
 

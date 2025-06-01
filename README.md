@@ -11,11 +11,19 @@ Each project is located in its own folder and includes a dedicated `README.md` w
 ## Projects
 
 ### 1. SwiftUISkeletonApp
+
 A SwiftUI app skeleton to explore navigation stacks, `TabView`, modal presentations, and integration with UIKit.
 
 📂 [SwiftUISkeletonApp](./SwiftUIApp)
 
 ### 2. ModularApp
+
 A modular, architecture-driven mini app using MVVM pattern. Includes onboarding, tab navigation, favorites management, dependency injection, and more.
 
 📂 [ModularApp](./MVVMSwiftUIApp)
+
+### 3. MultipeerConnectivityApp
+
+An app demonstrating the use of Apple's Multipeer Connectivity framework to create a local (mesh) network between devices. Features text transfer between peers.
+
+📂 [MultipeerConnectivityApp](./MultipeerApp)

@@ -1,7 +1,9 @@
 ## Homework Assignment
+
 Creating a Modular Application Using SOA/MVVM/Flux/MV
 
 ### Goal
+
 - Improve an ability to choose the right architecture for an entire application.  
 - Learn how to implement architectural patterns and understand the benefits of this approach.
 
