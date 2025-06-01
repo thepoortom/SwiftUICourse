@@ -8,7 +8,7 @@
 import Combine
 
 public protocol DealRepository {
-    var dealsPublisher: Published<[Deal]>.Publisher { get }
+    var dealsPublisher: AnyPublisher<[Deal], Never> { get }
     
     func getDeals() async -> [Deal]
     func saveDeals(_ deals: [Deal]) async
@@ -18,8 +18,8 @@ public final class InMemoryDealRepository {
     @Published
     private var deals: [Deal] = []
     
-    public var dealsPublisher: Published<[Deal]>.Publisher {
-        $deals
+    public var dealsPublisher: AnyPublisher<[Deal], Never> {
+        $deals.eraseToAnyPublisher()
     }
     
     // MARK: Life cycle

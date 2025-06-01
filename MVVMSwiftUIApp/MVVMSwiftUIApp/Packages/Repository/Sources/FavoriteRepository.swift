@@ -8,7 +8,7 @@
 import Combine
 
 public protocol FavoriteRepository {
-    var favoritesPublisher: Published<Set<String>>.Publisher { get }
+    var favoritesPublisher: AnyPublisher<Set<String>, Never> { get }
     
     func add(_ dealID: String) async
     func remove(_ dealID: String) async
@@ -19,8 +19,8 @@ public final class InMemoryFavoriteRepository {
     @Published
     private var favorites: Set<String> = []
     
-    public var favoritesPublisher: Published<Set<String>>.Publisher {
-        $favorites
+    public var favoritesPublisher: AnyPublisher<Set<String>, Never> {
+        $favorites.eraseToAnyPublisher()
     }
     
     // MARK: Life cycle

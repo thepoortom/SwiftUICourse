@@ -17,8 +17,8 @@ final class DealRepositoryMock {
 
 // MARK: - DealRepository
 extension DealRepositoryMock: DealRepository {
-    var dealsPublisher: Published<[Repository.Deal]>.Publisher {
-        $deals
+    var dealsPublisher: AnyPublisher<[Repository.Deal], Never> {
+        $deals.eraseToAnyPublisher()
     }
     
     func getDeals() async -> [Repository.Deal] {

@@ -17,8 +17,8 @@ final class FavoriteRepositoryMock {
 
 // MARK: - FavoriteRepository
 extension FavoriteRepositoryMock: FavoriteRepository {
-    var favoritesPublisher: Published<Set<String>>.Publisher {
-        $favorites
+    var favoritesPublisher: AnyPublisher<Set<String>, Never> {
+        $favorites.eraseToAnyPublisher()
     }
     
     func add(_ dealID: String) async {
