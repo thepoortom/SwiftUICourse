@@ -16,7 +16,9 @@ struct OnboardingView: View {
             VStack {
                 Text("[CheapShark API](https://apidocs.cheapshark.com)")
                 Text("Use this API to get the latest deals on video games")
+                    .multilineTextAlignment(.center)
                     .padding(.top, 2)
+                    .padding([.leading, .trailing, .bottom])
             }
             .navigationBarItems(trailing: Button("Done") {
                 hasSeenOnboarding = true
