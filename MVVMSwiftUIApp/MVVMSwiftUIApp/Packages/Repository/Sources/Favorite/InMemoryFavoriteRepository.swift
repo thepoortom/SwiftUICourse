@@ -1,19 +1,11 @@
 //
-//  FavoriteRepository.swift
-//  MVVMSwiftUIApp
+//  InMemoryFavoriteRepository.swift
+//  Repository
 //
-//  Created by Lev Iakimov on 10.05.2025.
+//  Created by Lev Iakimov on 14.06.2025.
 //
 
 import Combine
-
-public protocol FavoriteRepository {
-    var favoritesPublisher: AnyPublisher<Set<String>, Never> { get }
-    
-    func add(_ dealID: String) async
-    func remove(_ dealID: String) async
-    func isFavorite(dealID: String) -> Bool
-}
 
 public final class InMemoryFavoriteRepository {
     @Published
@@ -30,11 +22,11 @@ public final class InMemoryFavoriteRepository {
 
 // MARK: - FavoriteRepository
 extension InMemoryFavoriteRepository: FavoriteRepository {
-    public func add(_ dealID: String) async {
+    public func add(_ dealID: String) async throws {
         favorites.insert(dealID)
     }
     
-    public func remove(_ dealID: String) async {
+    public func remove(_ dealID: String) async throws {
         favorites.remove(dealID)
     }
     

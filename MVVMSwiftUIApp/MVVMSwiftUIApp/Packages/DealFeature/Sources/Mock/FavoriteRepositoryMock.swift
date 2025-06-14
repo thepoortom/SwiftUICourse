@@ -20,11 +20,11 @@ extension FavoriteRepositoryMock: FavoriteRepository {
         $favorites.eraseToAnyPublisher()
     }
     
-    func add(_ dealID: String) async {
+    func add(_ dealID: String) async throws {
         favorites.insert(dealID)
     }
     
-    func remove(_ dealID: String) async {
+    func remove(_ dealID: String) async throws {
         favorites.remove(dealID)
     }
     

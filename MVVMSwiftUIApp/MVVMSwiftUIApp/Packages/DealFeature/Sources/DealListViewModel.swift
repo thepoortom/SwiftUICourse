@@ -82,13 +82,20 @@ extension DealListViewModel {
     
     func toggleFavorite(for deal: DealWithFavoriteItemViewModel) async {
         let id = deal.deal.id
-        if deal.isFavorite {
-            await favoriteRepository.remove(id)
-        } else {
-            await favoriteRepository.add(id)
+        do {
+            if deal.isFavorite {
+                try await favoriteRepository.remove(id)
+            } else {
+                try await favoriteRepository.add(id)
+            }
+            
+            await refreshDeals()
+            
+        } catch {
+            await MainActor.run {
+                self.state = .failed(underlyingError: error)
+            }
         }
-        
-        await refreshDeals()
     }
     
     func refreshDeals() async {
