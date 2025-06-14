@@ -1,4 +1,4 @@
-## Homework Assignment
+## Homework Assignment 1
 
 Creating a Modular Application Using SOA/MVVM/Flux/MV
 
@@ -43,3 +43,31 @@ Creating a Modular Application Using SOA/MVVM/Flux/MV
 9. **Modularization:**
    - Move the data storage services and the networking layer into separate modules.  
    - Try to extract features into separate modules as well.
+
+
+## Homework Assignment 2
+
+Implementing Offline Mode Support in the Application
+
+### Goal
+
+Enhance the application you previously developed (which consists of multiple tabs) by adding offline mode support.
+
+### Description / Step-by-Step Instructions
+
+In an application that fetches data from the network:
+
+1. Implement data caching using one of the following technologies:
+   - Realm
+   - Files
+   - Firebase
+   - CoreData
+   *(Preferably use a technology that is new to you)*
+
+2. Ensure that the data models conform to the `Codable` protocol.
+
+Alternatively, you may implement caching using other methods such as:
+   - UserDefaults
+   - NoSQL solutions (e.g., CouchDBLite, PinCache)
+   - Keychain
+   - SwiftData

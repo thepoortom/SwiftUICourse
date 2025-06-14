@@ -20,6 +20,8 @@ A SwiftUI app skeleton to explore navigation stacks, `TabView`, modal presentati
 
 A modular, architecture-driven mini app using MVVM pattern. Includes onboarding, tab navigation, favorites management, dependency injection, and more.
 
+In the second part of the assignment, offline mode support is added to the app. It demonstrates caching and offline data handling using SwiftData.
+
 📂 [ModularApp](./MVVMSwiftUIApp)
 
 ### 3. MultipeerConnectivityApp
