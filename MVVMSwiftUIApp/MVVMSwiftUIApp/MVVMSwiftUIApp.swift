@@ -7,6 +7,7 @@
 
 import Network
 import Repository
+import SwiftData
 import SwiftUI
 
 @main
@@ -16,8 +17,8 @@ struct MVVMSwiftUIApp: App {
             dealNetworkService: DealNetworkServiceImpl(
                 baseURL: Configuration.current.baseURL + Configuration.current.apiVersion
             ),
-            dealRepository: InMemoryDealRepository(),
-            favoriteRepository: InMemoryFavoriteRepository()
+            dealRepository: DependencyContainer.makeDealRepository(),
+            favoriteRepository: DependencyContainer.makeFavoriteRepository()
         )
     }()
     
@@ -26,5 +27,35 @@ struct MVVMSwiftUIApp: App {
             TabBarView()
                 .environmentObject(dependencyContainer)
         }
+    }
+}
+
+private extension DependencyContainer {
+    static func makeDealRepository() -> DealRepository {
+        guard #available(iOS 17, *) else {
+            return InMemoryDealRepository()
+        }
+        let configuration = ModelConfiguration("DealStore")
+        guard let modelContainer = try? ModelContainer(
+            for: DealModel.self,
+            configurations: configuration
+        ) else {
+            return InMemoryDealRepository()
+        }
+        return SwiftDataDealRepository(modelContainer: modelContainer)
+    }
+    
+    static func makeFavoriteRepository() -> FavoriteRepository {
+        guard #available(iOS 17, *) else {
+            return InMemoryFavoriteRepository()
+        }
+        let configuration = ModelConfiguration("FavoriteDealStore")
+        guard let modelContainer = try? ModelContainer(
+            for: FavoriteDealModel.self,
+            configurations: configuration
+        ) else {
+            return InMemoryFavoriteRepository()
+        }
+        return SwiftDataFavoriteRepository(modelContainer: modelContainer)
     }
 }
