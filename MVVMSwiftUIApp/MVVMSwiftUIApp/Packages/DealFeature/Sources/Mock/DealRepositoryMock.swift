@@ -25,7 +25,7 @@ extension DealRepositoryMock: DealRepository {
         deals
     }
     
-    func saveDeals(_ deals: [Repository.Deal]) async {
+    func saveDeals(_ deals: [Repository.Deal]) async throws {
         self.deals = deals
     }
 }

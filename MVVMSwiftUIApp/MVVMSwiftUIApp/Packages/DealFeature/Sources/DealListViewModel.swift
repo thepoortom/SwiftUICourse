@@ -71,7 +71,7 @@ extension DealListViewModel {
                 self.state = .success
             }
             
-            await dealRepository.saveDeals(fetchedDeals.map { Repository.Deal(entity: $0) })
+            try await dealRepository.saveDeals(fetchedDeals.map { Repository.Deal(entity: $0) })
             
         } catch {
             await MainActor.run {
